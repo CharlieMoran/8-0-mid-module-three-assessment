@@ -1,13 +1,13 @@
-#products {
+.products {
     display: grid;
     width: 50px;
     height: 5000px;
-    grid-template-columns:  2fr 5fr;
+    grid-template-columns:  2fr 1fr 1fr;
 }
 
-#cart {
+.cart {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: right;
 }

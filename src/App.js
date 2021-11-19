@@ -24,7 +24,7 @@ clicky = (el) => {
     price: [Number(this.state.price[0] + el.target.value).toFixed(2)],
     tax: this.price * .05,
     totalPrice: (Number(this.price + (this.state.price * .05))),
-    products: this.state.products + (`${productData[i].name}: $${productData[i].price.toFixed(2)}` + "^"),
+    products: this.state.products + (`${productData[i].name}: $${productData[i].price.toFixed(2)}`),
     });
     return (<div id="cart">
         <h3>Cart</h3>
@@ -72,7 +72,7 @@ if (zipC === "" || Number(zipC) === NaN){
 } else if (zipC.length > 5){
     alert("Zipcode must be 5 digits you banana!")
 } else {
-    alert(`Your purchase of $${this.state.totalPrice} was made successfully!`)
+    alert(`Your purchase of $${this.state.totalPrice} was made successfully! Purchase complete`)
 }
 }
 
@@ -81,7 +81,7 @@ render () {
     return( <div>
         <h1>My Garage Sale</h1>
         <br />
-        <div id="products">
+        <div className="products" id="products">
             <br />
             <h3>{productData[0].name}</h3>
         <label>
@@ -90,7 +90,7 @@ render () {
         <br />
         <br />
         <button onClick={this.clicky} value={productData[0].price.toFixed(2)} id="0">
-            Add to Cart
+            Add To Cart
         </button>
         <br />
         <img src={productData[0].img} />
@@ -107,7 +107,7 @@ render () {
         <br />
         <br />
         <button onClick={this.clicky} value={productData[1].price.toFixed(2)} id="1">
-            Add to Cart
+            Add To Cart
         </button>
         <br />
         <img src={productData[1].img} />
@@ -124,7 +124,7 @@ render () {
         <br />
         <br />
         <button onClick={this.clicky} value={productData[2].price.toFixed(2)} id="2">
-            Add to Cart
+            Add To Cart
         </button>
         <br />
         <img src={productData[2].img} />
@@ -141,7 +141,7 @@ render () {
         <br />
         <br />
         <button onClick={this.clicky} value={productData[3].price.toFixed(2)} id="3">
-            Add to Cart
+            Add To Cart
         </button>
         <br />
         <img src={productData[3].img} />
@@ -157,7 +157,7 @@ render () {
         </label>
         <br />
         <button onClick={this.clicky} value={productData[4].price.toFixed(2)} id="4">
-            Add to Cart
+            Add To Cart
         </button>
         <br />
         <img src={productData[4].img} />
@@ -174,7 +174,7 @@ render () {
         <br />
         <br />
         <button onClick={this.clicky} value={productData[5].price.toFixed(2)} id="5">
-            Add to Cart
+            Add To Cart
         </button>
         <br />
         <img src={productData[5].img} />
@@ -184,7 +184,7 @@ render () {
         </p>
         </div>
 
-        <div id="cart">
+        <div className="cart" id="cart">
             <h3>
             Cart
             </h3>
@@ -192,12 +192,15 @@ render () {
         <ul id="cart-stuff">
             <li>{this.state.products}</li>
         </ul>
+        <section>
         <h3>SubTotal: ${this.state.price}</h3>
         <h3>Tax: ${this.state.tax}</h3>
         <h3>Total: ${this.state.totalPrice}</h3>
+        </section>
         </div>
 
-        <div id="checkout">
+        <form id="checkout">
+            <h3>Checkout</h3>
         <label>
             First Name<br />
             <input id="first"></input>
@@ -223,8 +226,8 @@ render () {
             <input id="zip"></input>
             <br />
         </label>
-        <button onClick={this.checkOut}>Buy Now</button>
-        </div>
+        <button onClick={this.checkOut} type="submit">Buy Now</button>
+        </form>
         
         </div>)
 }
