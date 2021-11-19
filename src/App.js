@@ -195,8 +195,8 @@ render () {
         </ul>
         <section>
         <h3>Subtotal: ${this.state.price}</h3>
-        <h3>Tax: ${this.state.tax}</h3>
-        <h3>Total: ${this.state.totalPrice}</h3>
+        <h3>Tax: ${((this.state.price)* .05).toFixed(2)}</h3>
+        <h3>Total: ${(Math.abs(this.state.price +this.state.tax)).toFixed(2)}</h3>
         </section>
         </div>
 
