@@ -22,8 +22,8 @@ clicky = (el) => {
     let i = el.target.id;
     this.setState({
     price: [Number(this.state.price[0] + el.target.value).toFixed(2)],
-    tax: this.price * .05,
-    totalPrice: (Number(this.price + (this.state.price * .05))),
+    tax: Number(this.state.price * .05),
+    totalPrice: (Number(this.state.price + (this.state.price * .05))),
     products: this.state.products + (`${productData[i].name}: $${productData[i].price.toFixed(2)}`),
     });
     return (<div id="cart">
@@ -33,6 +33,7 @@ clicky = (el) => {
         </ul>
         </div>)
 };
+
 
 
 formatPrice = (price) => `$${price.toFixed(2)}`;
@@ -52,22 +53,22 @@ this.state = {
     zipCode: zipC,
 }
 
-if (fN === ""){
+if (fN === "" || fN === "undefined" || fN === null){
     alert("Enter your first name you banana!")
 }
-if (lN === ""){
+if (lN === "" || lN === "undefined" || lN === null){
     alert("Enter your last name you banana!")
 }
-if (eM.length === 0){
+if (eM.length === 0 || eM === "undefined" || eM === null){
     alert("Enter your email you banana!")
 }
-if (cC === "" || Number(cC)=== NaN){
+if (cC === "" || Number(cC)=== NaN || cC === null){
     alert("Enter your credit card number you banana!")
 }
 else if (cC.length > 16 || cC.length < 16){
     alert("Credit Card Number must be 16 digits you banana!")
 }
-if (zipC === "" || Number(zipC) === NaN){
+if (zipC === "" || Number(zipC) === NaN || zipC === "undefined" || zipC === null){
     alert("Enter your zip code you banana!")
 } else if (zipC.length > 5){
     alert("Zipcode must be 5 digits you banana!")
@@ -193,7 +194,7 @@ render () {
             <li>{this.state.products}</li>
         </ul>
         <section>
-        <h3>SubTotal: ${this.state.price}</h3>
+        <h3>Subtotal: ${this.state.price}</h3>
         <h3>Tax: ${this.state.tax}</h3>
         <h3>Total: ${this.state.totalPrice}</h3>
         </section>
