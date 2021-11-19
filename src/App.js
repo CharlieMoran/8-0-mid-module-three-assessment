@@ -6,7 +6,7 @@ class App extends React.Component {
 constructor (){
     super()
     this.state = {
-        price: [0],
+        price: "",
         products: [],
         tax:"",
         totalPrice: "",
@@ -21,7 +21,7 @@ constructor (){
 clicky = (el) => {
     let i = el.target.id;
     this.setState({
-    price: [Number(this.state.price[0] + el.target.value).toFixed(2)],
+    price: Number(this.state.price + el.target.value).toFixed(2),
     tax: Number(this.state.price * .05),
     totalPrice: (Number(this.state.price + (this.state.price * .05))),
     products: this.state.products + (`${productData[i].name}: $${productData[i].price.toFixed(2)}`),
@@ -90,7 +90,7 @@ render () {
         </label>
         <br />
         <br />
-        <button onClick={this.clicky} value={productData[0].price.toFixed(2)} id="0">
+        <button onClick={this.clicky} value={productData[0].price.toFixed(2)} id="0" type="submit">
             Add To Cart
         </button>
         <br />
@@ -196,7 +196,7 @@ render () {
         <section>
         <h3>Subtotal: ${this.state.price}</h3>
         <h3>Tax: ${((this.state.price)* .05).toFixed(2)}</h3>
-        <h3>Total: ${(Math.abs(this.state.price +this.state.tax)).toFixed(2)}</h3>
+        <h3>Total: ${(Math.abs(this.state.price + this.state.tax)).toFixed(2)}</h3>
         </section>
         </div>
 
