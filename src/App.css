@@ -1,7 +1,13 @@
-.products {
-    grid-template-columns:  2fr 2fr;
+#products {
+    display: grid;
+    width: 50px;
+    height: 5000px;
+    grid-template-columns:  2fr 5fr;
 }
 
-.cart {
-    grid-template-columns: 1fr 1fr;
+#cart {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-content: right;
 }

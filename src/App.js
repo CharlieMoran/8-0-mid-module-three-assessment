@@ -19,11 +19,19 @@ constructor (){
 } 
 
 clicky = (el) => {
+    let i = el.target.id;
     this.setState({
     price: [Number(this.state.price[0] + el.target.value).toFixed(2)],
     tax: this.price * .05,
     totalPrice: (Number(this.price + (this.state.price * .05))),
+    products: this.state.products + (`${productData[i].name}: $${productData[i].price.toFixed(2)}` + "^"),
     });
+    return (<div id="cart">
+        <h3>Cart</h3>
+        <ul id="cart-stuff">
+        <li>{this.products}</li>
+        </ul>
+        </div>)
 };
 
 
@@ -36,22 +44,30 @@ let eM = document.getElementById("email");
 let cC = document.getElementById("cc");
 let zipC = document.getElementById("zip");
 
-if (fN === undefined){
+this.state = {
+    firstName: fN,
+    lastName: lN,
+    email: eM,
+    ccNum: cC,
+    zipCode: zipC,
+}
+
+if (fN === ""){
     alert("Enter your first name you banana!")
 }
-if (lN === undefined){
+if (lN === ""){
     alert("Enter your last name you banana!")
 }
 if (eM.length === 0){
     alert("Enter your email you banana!")
 }
-if (cC === undefined || cC === NaN){
+if (cC === "" || Number(cC)=== NaN){
     alert("Enter your credit card number you banana!")
 }
 else if (cC.length > 16 || cC.length < 16){
     alert("Credit Card Number must be 16 digits you banana!")
 }
-if (zipC === undefined || zipC === NaN){
+if (zipC === "" || Number(zipC) === NaN){
     alert("Enter your zip code you banana!")
 } else if (zipC.length > 5){
     alert("Zipcode must be 5 digits you banana!")
@@ -63,16 +79,17 @@ if (zipC === undefined || zipC === NaN){
 
 render () {
     return( <div>
-        <p>My Garage Sale</p>
+        <h1>My Garage Sale</h1>
         <br />
         <div id="products">
-        <label>
-            {productData[0].name}
             <br />
+            <h3>{productData[0].name}</h3>
+        <label>
             Price: ${productData[0].price.toFixed(2)}
         </label>
         <br />
-        <button onClick={this.clicky} value="19.99" id="baseball">
+        <br />
+        <button onClick={this.clicky} value={productData[0].price.toFixed(2)} id="0">
             Add to Cart
         </button>
         <br />
@@ -81,13 +98,15 @@ render () {
         <p>
         {productData[0].description}
         </p>
+
+        <br />
+        <h3>{productData[1].name}</h3>
         <label>
-            {productData[1].name}
-            <br />
             Price: ${productData[1].price.toFixed(2)}
         </label>
         <br />
-        <button onClick={this.clicky} value="20.0" id="vcr">
+        <br />
+        <button onClick={this.clicky} value={productData[1].price.toFixed(2)} id="1">
             Add to Cart
         </button>
         <br />
@@ -96,13 +115,15 @@ render () {
         <p>
         {productData[1].description}
         </p>
+
+        <br />
+        <h3>{productData[2].name}</h3>
         <label>
-            {productData[2].name}
-            <br />
             Price: ${productData[2].price.toFixed(2)}
         </label>
         <br />
-        <button onClick={this.clicky} value="55.55" id="bicycle">
+        <br />
+        <button onClick={this.clicky} value={productData[2].price.toFixed(2)} id="2">
             Add to Cart
         </button>
         <br />
@@ -111,14 +132,15 @@ render () {
         <p>
         {productData[2].description}
         </p>
-        </div>
+
+        <br />
+        <h3>{productData[3].name}</h3>
         <label>
-            {productData[3].name}
-            <br />
             Price: ${productData[3].price.toFixed(2)}
         </label>
         <br />
-        <button onClick={this.clicky} value="2.99" id="socks">
+        <br />
+        <button onClick={this.clicky} value={productData[3].price.toFixed(2)} id="3">
             Add to Cart
         </button>
         <br />
@@ -127,13 +149,14 @@ render () {
         <p>
         {productData[3].description}
         </p>
+
+        <br />
+        <h3>{productData[4].name}</h3>
         <label>
-            {productData[4].name}
-            <br />
             Price: ${productData[4].price.toFixed(2)}
         </label>
         <br />
-        <button onClick={this.clicky} value="7.5" id="newspaper">
+        <button onClick={this.clicky} value={productData[4].price.toFixed(2)} id="4">
             Add to Cart
         </button>
         <br />
@@ -142,13 +165,15 @@ render () {
         <p>
         {productData[4].description}
         </p>
+
+        <br />
+        <h3>{productData[5].name}</h3>
         <label>
-            {productData[5].name}
-            <br />
             Price: ${productData[5].price.toFixed(2)}
         </label>
         <br />
-        <button onClick={this.clicky} value="47.0" id="armchair">
+        <br />
+        <button onClick={this.clicky} value={productData[5].price.toFixed(2)} id="5">
             Add to Cart
         </button>
         <br />
@@ -157,20 +182,19 @@ render () {
         <p>
         {productData[5].description}
         </p>
+        </div>
+
         <div id="cart">
-            <label>
+            <h3>
             Cart
-            </label>
-        <div id="cart-stuff"></div>
-        <br />
-        <label>SubTotal: ${this.state.price}</label>
-        <br />
-        <label>Tax: ${this.state.tax}</label>
-        <br />
-        <label>Total: ${this.state.totalPrice}</label>
-        <br />
-
-
+            </h3>
+            <br />
+        <ul id="cart-stuff">
+            <li>{this.state.products}</li>
+        </ul>
+        <h3>SubTotal: ${this.state.price}</h3>
+        <h3>Tax: ${this.state.tax}</h3>
+        <h3>Total: ${this.state.totalPrice}</h3>
         </div>
 
         <div id="checkout">

@@ -8,11 +8,15 @@ body {
 }
 
 .products {
-  grid-template-columns:  2fr 2fr;
+  display: grid;
+  width: auto;
+  grid-template-columns:  2fr 2fr auto auto;
 }
 
 .cart {
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  width: auto;
+  grid-template-columns: 1fr 1fr auto auto;
 }
 
 
