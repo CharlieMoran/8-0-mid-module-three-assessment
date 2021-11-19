@@ -53,25 +53,25 @@ this.state = {
     zipCode: zipC,
 }
 
-if (fN === "" || fN === "undefined" || fN === null){
-    alert("Enter your first name you banana!")
+if (fN === "" || typeof(fN) === "undefined" || typeof(fN) === null){
+    alert("Input is not valid")
 }
-if (lN === "" || lN === "undefined" || lN === null){
-    alert("Enter your last name you banana!")
+if (lN === "" || typeof(lN) === "undefined" || typeof(lN) === null){
+    alert("Input is not valid")
 }
-if (eM.length === 0 || eM === "undefined" || eM === null){
+if (eM.length === 0 || typeof(eM) === "undefined" || typeof(eM) === null){
     alert("Enter your email you banana!")
 }
-if (cC === "" || Number(cC)=== NaN || cC === null){
-    alert("Enter your credit card number you banana!")
+if (cC === "" || Number(cC)=== NaN || typeof(cC) === null || typeof(cC) === "undefined"){
+    alert("Credit card number is not valid")
 }
 else if (cC.length > 16 || cC.length < 16){
-    alert("Credit Card Number must be 16 digits you banana!")
+    alert("Credit Card number is not valid")
 }
-if (zipC === "" || Number(zipC) === NaN || zipC === "undefined" || zipC === null){
-    alert("Enter your zip code you banana!")
-} else if (zipC.length > 5){
-    alert("Zipcode must be 5 digits you banana!")
+if (zipC === "" || Number(zipC) === NaN || typeof(zipC) === "undefined" || typeof(zipC) === null){
+    alert("Zip code is not valid")
+} else if (zipC.length >= 5){
+    alert("Zip code is not valid")
 } else {
     alert(`Your purchase of $${this.state.totalPrice} was made successfully! Purchase complete`)
 }
